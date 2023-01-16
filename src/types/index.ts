@@ -8,4 +8,13 @@ interface ButtonProps {
   children: React.ReactNode
 }
 
-export type {LayoutProps, ButtonProps}
+interface UserInterface {
+  email: string
+  password: string
+}
+
+interface FormInterface {
+  [key: string]: string
+}
+
+export type {LayoutProps, ButtonProps, UserInterface, FormInterface}

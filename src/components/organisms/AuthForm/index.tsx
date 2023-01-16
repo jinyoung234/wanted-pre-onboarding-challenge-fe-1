@@ -1,7 +1,9 @@
-import {FormButton, Input} from '@/components/atoms'
-import {FormLayout} from '@/wrappers'
+import {ErrorText, FormButton} from '@/components/atoms'
+import Input from '@/components/atoms/Input'
+import {FormLayout, InputLayout} from '@/wrappers'
 import {AuthContext} from '@/wrappers/Auth.layout'
 import React from 'react'
+import {useFormContext} from 'react-hook-form'
 
 interface AuthFormProps {
   btnContent: string
@@ -9,12 +11,24 @@ interface AuthFormProps {
 
 const AuthForm = ({btnContent}: AuthFormProps) => {
   const {
-    inputProps: {id, pw},
+    inputProps: {email, password},
+    formProps: {handleValidAuth},
   } = React.useContext(AuthContext)
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useFormContext()
   return (
-    <FormLayout>
-      <Input placeholder={id.placeholder} />
-      <Input placeholder={pw.placeholder} />
+    <FormLayout handleSubmit={handleSubmit(handleValidAuth)}>
+      <InputLayout>
+        <Input type={email.type} {...register('email')} placeholder={email.placeholder} />
+        {errors?.email && <ErrorText errorContent={errors?.email?.message as string} />}
+      </InputLayout>
+      <InputLayout>
+        <Input type={password.type} {...register('password')} placeholder={password.placeholder} />
+        {errors?.password && <ErrorText errorContent={errors?.password?.message as string} />}
+      </InputLayout>
       <FormButton>{btnContent}</FormButton>
     </FormLayout>
   )
