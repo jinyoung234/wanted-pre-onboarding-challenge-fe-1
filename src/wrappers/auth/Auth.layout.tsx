@@ -4,7 +4,7 @@ import {FormProvider, useForm} from 'react-hook-form'
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useRouter} from 'next/router'
-import {useSignUpMutation} from '@/queries'
+import {useSignInMutation, useSignUpMutation} from '@/queries'
 
 interface FormPropsInterface {
   handleValidAuth: (data: FormInterface) => void
@@ -49,9 +49,9 @@ const AuthLayout = ({children}: LayoutProps) => {
   const handleValidSignUp = (userInfo: FormInterface) => {
     postSignUpMutate(userInfo)
   }
-
-  const handleValidSignIn = (data: FormInterface) => {
-    console.log(data)
+  const {postSignInMutate} = useSignInMutation()
+  const handleValidSignIn = (userInfo: FormInterface) => {
+    postSignInMutate(userInfo)
   }
   const {pathname} = useRouter()
   const handleValidAuth = pathname === '/sign-up' ? handleValidSignUp : handleValidSignIn
