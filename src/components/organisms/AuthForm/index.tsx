@@ -1,7 +1,7 @@
 import {ErrorText, FormButton} from '@/components/atoms'
 import Input from '@/components/atoms/Input'
 import {FormLayout, InputLayout} from '@/wrappers'
-import {AuthContext} from '@/wrappers/Auth.layout'
+import {AuthContext} from '@/wrappers/auth/Auth.layout'
 import React from 'react'
 import {useFormContext} from 'react-hook-form'
 
