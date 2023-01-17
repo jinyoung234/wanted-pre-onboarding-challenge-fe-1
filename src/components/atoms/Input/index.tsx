@@ -11,7 +11,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({type, placeholder
       type={type}
       placeholder={placeholder}
       ref={ref}
-      className='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2'
+      className='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2 text-[12px]'
       {...rest}
     />
   )
