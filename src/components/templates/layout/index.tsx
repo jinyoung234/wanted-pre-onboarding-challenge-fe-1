@@ -5,7 +5,7 @@ interface LayoutProps {
 }
 
 function Layout({children}: LayoutProps) {
-  return <div className='max-w-xl mx-auto h-screen bg-slate-100 flex'>{children}</div>
+  return <div className='max-w-xl mx-auto h-screen bg-slate-100 flex flex-col'>{children}</div>
 }
 
 export default Layout
