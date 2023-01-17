@@ -6,13 +6,18 @@ import React from 'react'
 import {RecoilRoot} from 'recoil'
 import '@/styles/globals.css'
 import {Layout} from '@/components/templates'
+import {NavBar} from '@/components/organisms'
+import {useRouter} from 'next/router'
 
 const App: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
+  const router = useRouter()
+  const isMain = router.pathname === '/'
   const queryClient = new QueryClient()
   return (
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <Layout>
+          {isMain && <NavBar />}
           <Component {...pageProps} />
         </Layout>
         <ReactQueryDevtools />
