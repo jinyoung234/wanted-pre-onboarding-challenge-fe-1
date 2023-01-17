@@ -1,3 +1,2 @@
-export function classNames(...classnames: string[]) {
-  return classnames.join(' ')
-}
+export {classNames} from '@/utils/util'
+export {getStoredToken, setStoredToken, clearStoredToken} from '@/utils/util/localStorage'
