@@ -1,5 +1,7 @@
+import {AuthTemplate} from '@/components/templates'
+
 const SignIn = () => {
-  return <div className='bg-red-50'>hzi</div>
+  return <AuthTemplate textContent='로그인' btnContent='로그인' />
 }
 
 export default SignIn
