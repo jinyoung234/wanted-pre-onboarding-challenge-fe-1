@@ -7,6 +7,7 @@ import {useRouter} from 'next/router'
 import {useSignInMutation, useSignUpMutation} from '@/queries'
 
 interface FormPropsInterface {
+  authFormStyle: string
   handleValidAuth: (data: FormInterface) => void
 }
 interface InputPropsInterface {
@@ -55,7 +56,9 @@ const AuthLayout = ({children}: LayoutProps) => {
   }
   const {pathname} = useRouter()
   const handleValidAuth = pathname === '/sign-up' ? handleValidSignUp : handleValidSignIn
+  const authFormStyle = 'w-full flex flex-col items-center'
   const formProps: FormPropsInterface = {
+    authFormStyle,
     handleValidAuth,
   }
   return (

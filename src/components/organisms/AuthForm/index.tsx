@@ -12,7 +12,7 @@ interface AuthFormProps {
 const AuthForm = ({btnContent}: AuthFormProps) => {
   const {
     inputProps: {email, password},
-    formProps: {handleValidAuth},
+    formProps: {handleValidAuth, authFormStyle},
   } = React.useContext(AuthContext)
   const {
     register,
@@ -20,7 +20,7 @@ const AuthForm = ({btnContent}: AuthFormProps) => {
     formState: {errors},
   } = useFormContext()
   return (
-    <FormLayout handleSubmit={handleSubmit(handleValidAuth)}>
+    <FormLayout formStyle={authFormStyle} handleSubmit={handleSubmit(handleValidAuth)}>
       <InputLayout>
         <Input type={email.type} {...register('email')} placeholder={email.placeholder} />
         {errors?.email && <ErrorText errorContent={errors?.email?.message as string} />}

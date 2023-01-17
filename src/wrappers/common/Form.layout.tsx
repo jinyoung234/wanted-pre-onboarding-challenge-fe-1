@@ -2,12 +2,13 @@ import {LayoutProps} from '@/types'
 import React from 'react'
 
 type FormLayoutProps = LayoutProps & {
+  formStyle?: string
   handleSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
 }
 
-const FormLayout = ({children, handleSubmit}: FormLayoutProps) => {
+const FormLayout = ({children, formStyle, handleSubmit}: FormLayoutProps) => {
   return (
-    <form className={'w-full flex flex-col items-center'} onSubmit={handleSubmit}>
+    <form className={formStyle} onSubmit={handleSubmit}>
       {children}
     </form>
   )
