@@ -3,7 +3,7 @@ import React from 'react'
 
 const NavBar = () => {
   return (
-    <nav className='fixed flex justify-between top-0 w-[36rem] h-[4rem] border-solid border border-[#d8dcd4] bg-white '>
+    <nav className='fixed z-[999] flex justify-between top-0 w-[36rem] h-[4rem] border-solid border border-[#d8dcd4] bg-white '>
       <ul className='flex items-center justify-start w-[50%] pl-6'>
         <Svg alt='icon' src={'/images/chevron-left.jpeg'} />
       </ul>
