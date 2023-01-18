@@ -1,21 +1,26 @@
 import React, {InputHTMLAttributes} from 'react'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  defaultValue?: string
   placeholder: string
   type: string
+  inputStyle: string
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({type, placeholder, ...rest}: InputProps, ref) => {
-  return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      ref={ref}
-      className='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2 text-[12px]'
-      {...rest}
-    />
-  )
-})
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({defaultValue, type, placeholder, inputStyle, ...rest}: InputProps, ref) => {
+    return (
+      <input
+        defaultValue={defaultValue}
+        type={type}
+        placeholder={placeholder}
+        ref={ref}
+        className={inputStyle}
+        {...rest}
+      />
+    )
+  },
+)
 
 Input.displayName = 'Input'
 

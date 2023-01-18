@@ -22,11 +22,21 @@ const AuthForm = ({btnContent}: AuthFormProps) => {
   return (
     <FormLayout formStyle={authFormStyle} handleSubmit={handleSubmit(handleValidAuth)}>
       <InputLayout>
-        <Input type={email.type} {...register('email')} placeholder={email.placeholder} />
+        <Input
+          inputStyle='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2 text-[12px]'
+          type={email.type}
+          {...register('email')}
+          placeholder={email.placeholder}
+        />
         {errors?.email && <ErrorText errorContent={errors?.email?.message as string} />}
       </InputLayout>
       <InputLayout>
-        <Input type={password.type} {...register('password')} placeholder={password.placeholder} />
+        <Input
+          inputStyle='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2 text-[12px]'
+          type={password.type}
+          {...register('password')}
+          placeholder={password.placeholder}
+        />
         {errors?.password && <ErrorText errorContent={errors?.password?.message as string} />}
       </InputLayout>
       <FormButton>{btnContent}</FormButton>

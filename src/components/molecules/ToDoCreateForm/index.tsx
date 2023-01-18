@@ -6,7 +6,11 @@ const ToDoCreateForm = () => {
   return (
     <FormLayout formStyle='py-6 flex flex-col items-center'>
       <Text textStyle='text-[1.5rem] mb-2'>TO-DO 생성</Text>
-      <Input type='text' placeholder='제목을 입력해주세요.' />
+      <Input
+        inputStyle='m-2 w-[20rem] h-[2.5rem] rounded-[0.5rem] px-2 text-[12px]'
+        type='text'
+        placeholder='제목을 입력해주세요.'
+      />
       <Textarea
         placeholder='내용을 입력하세요.'
         textareaStyle='w-[20rem] h-[5rem] resize-none rounded-lg px-2 py-4 text-[12px]'
