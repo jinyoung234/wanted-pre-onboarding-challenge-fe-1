@@ -1,7 +1,7 @@
 import {LayoutProps} from '@/types'
 
 const ToDoLayout = ({children}: LayoutProps) => {
-  return <div className='flex flex-col relative mt-[4rem]'>{children}</div>
+  return <div className='flex flex-col mt-[4rem] relative'>{children}</div>
 }
 
 export default ToDoLayout
