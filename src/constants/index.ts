@@ -8,4 +8,9 @@ const END_POINT = {
   GET_TODOS: `${API}/todos`,
 }
 
-export {END_POINT}
+const QUERY_KEY = {
+  USER: 'user',
+  TODO: 'todo',
+}
+
+export {END_POINT, QUERY_KEY}
