@@ -17,4 +17,36 @@ interface FormInterface {
   [key: string]: string
 }
 
-export type {LayoutProps, ButtonProps, UserInterface, FormInterface}
+interface ToDoInterface {
+  title: string
+  content: string
+  id: string
+  createdAt: string
+  updatedAt: string
+}
+
+type CreateToDoType = Pick<ToDoInterface, 'title' | 'content'>
+
+interface ToDoListDetailInterface {
+  data: ToDoInterface
+}
+
+interface ResponseToDoListInterface {
+  data: ToDoListInterface
+}
+
+interface ToDoListInterface {
+  data: ToDoInterface[]
+}
+
+export type {
+  LayoutProps,
+  ButtonProps,
+  UserInterface,
+  FormInterface,
+  ToDoInterface,
+  ToDoListInterface,
+  ToDoListDetailInterface,
+  CreateToDoType,
+  ResponseToDoListInterface,
+}
