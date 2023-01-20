@@ -5,7 +5,7 @@ import {useMutation, useQueryClient} from '@tanstack/react-query'
 import {AxiosError} from 'axios'
 import {useRouter} from 'next/router'
 
-const useModifyTodo = () => {
+const useModifyTodo = (setModify: React.Dispatch<React.SetStateAction<boolean>>) => {
   const queryClient = useQueryClient()
   const router = useRouter()
   const {mutate: requestModifyTodo} = useMutation(
@@ -14,6 +14,7 @@ const useModifyTodo = () => {
     {
       onSuccess: () => {
         queryClient.invalidateQueries([QUERY_KEY.TODO])
+        setModify(false)
         alert('수정이 완료되었습니다.')
         router.reload()
       },
