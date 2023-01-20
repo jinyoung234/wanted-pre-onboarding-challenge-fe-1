@@ -34,19 +34,17 @@ const deleteTodo = async (token: string, id: string) => {
   }
 }
 
-const updateTodo = async (token: string, config: object, id: string) => {
-  try {
-    const response = await client.put(`${END_POINT.PUT_UPDATE_TODO}${id}`, config, {
-      headers: {
-        Authorization: token,
-      },
-    })
-    return response.data
-  } catch (error) {
-    const {response} = error as unknown as AxiosError
-    const {details} = response?.data as unknown as ErrorMessageInterface
-    if (response?.status === 400) alert(details)
-  }
+const updateTodo: (id: string, modifyTodo: CreateToDoType) => Promise<ToDoListDetailInterface> = async (
+  id: string,
+  modifyTodo: CreateToDoType,
+) => {
+  const accessToken = getStoredToken()
+  const {data} = await client.put(`${END_POINT.PUT_UPDATE_TODO}${id}`, modifyTodo, {
+    headers: {
+      Authorization: accessToken,
+    },
+  })
+  return data
 }
 
 const createTodos = async (userTodo: CreateToDoType) => {
