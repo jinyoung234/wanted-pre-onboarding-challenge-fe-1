@@ -26,7 +26,7 @@ function useGetTodoDetail() {
   const {title, content, createdAt, id} = data?.data
   const todoDetail = {createdAt: createdAt?.split('T')[0], title, content, id}
 
-  return {todoDetail, setTodoId}
+  return {todoDetail, todoId, setTodoId}
 }
 
 export default useGetTodoDetail
