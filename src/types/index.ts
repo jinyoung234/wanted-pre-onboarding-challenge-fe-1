@@ -39,6 +39,14 @@ interface ToDoListInterface {
   data: ToDoInterface[]
 }
 
+interface ToDoListProps {
+  handleSubmitTodo: (todo: CreateToDoType) => void
+  handleViewDetailTodo: () => void
+}
+interface MainPageContextInterface {
+  todoList: ToDoListProps
+}
+
 export type {
   LayoutProps,
   ButtonProps,
@@ -49,4 +57,6 @@ export type {
   ToDoListDetailInterface,
   CreateToDoType,
   ResponseToDoListInterface,
+  ToDoListProps,
+  MainPageContextInterface,
 }
