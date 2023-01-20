@@ -41,14 +41,11 @@ interface ToDoListInterface {
 
 interface ToDoListProps {
   handleSubmitTodo: (todo: CreateToDoType) => void
-  handleViewDetailTodo: () => void
+  handleViewDetailTodo: (id?: string) => void
 }
+
 interface MainPageContextInterface {
   todoList: ToDoListProps
-  todoBoard: {
-    modify: boolean
-    handleModifyTodo: () => void
-  }
 }
 
 export type {

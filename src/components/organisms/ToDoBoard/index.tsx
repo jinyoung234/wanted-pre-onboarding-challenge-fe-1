@@ -1,11 +1,18 @@
 import {CancelButton, CompleteButton, DeleteButton, Input, Label, ModifyButton, Textarea} from '@/components/atoms'
+import {MainPageContext} from '@/contexts'
+import {ToDoInterface} from '@/types'
 import {FormLayout} from '@/wrappers'
 import React from 'react'
-const ToDoBoard = ({todo}: any) => {
-  const [modify, setModify] = React.useState(false)
-  const handleModify = () => {
-    setModify(!modify)
-  }
+
+interface ToDoBoardProps {
+  modify: boolean
+  handleModifyTodo: () => void
+  todoDetail: Pick<ToDoInterface, 'content' | 'title'>
+}
+const ToDoBoard = ({todoDetail, modify, handleModifyTodo}: ToDoBoardProps) => {
+  const {
+    todoList: {handleViewDetailTodo},
+  } = React.useContext(MainPageContext)
   return (
     <div className='absolute left-[9rem] z-[1000] top-[10rem] bg-white w-[20rem] h-[14rem] rounded-md'>
       <FormLayout formStyle='flex flex-col items-center justify-center w-[100%] h-[100%] p-3'>
@@ -14,19 +21,21 @@ const ToDoBoard = ({todo}: any) => {
             제목
           </Label>
           <Input
+            defaultValue={todoDetail?.title}
             id='title'
             inputStyle='w-full my-2 h-[2rem] rounded-md px-2 text-[0.75rem] text-gray-500 border border-gray-300'
             placeholder=''
-            disabled={modify}
+            disabled={!modify}
             type='text'
           />
           <Label htmlFor='content' labelStyle='text-[14px]'>
             내용
           </Label>
           <Textarea
+            defaultValue={todoDetail?.content}
             id='content'
             placeholder=''
-            disabled={modify}
+            disabled={!modify}
             textareaStyle='resize-none mt-2 w-full h-[4rem] rounded-[0.5rem] px-2 py-4 text-[12px] overflow-hidden border border-gray-300'
           />
         </div>
@@ -34,16 +43,19 @@ const ToDoBoard = ({todo}: any) => {
           {modify ? (
             <>
               <div className='mr-1'>
-                <ModifyButton handleModify={handleModify} />
+                <CompleteButton />
               </div>
-              <DeleteButton />
+              <div className='mr-1'>
+                <DeleteButton />
+              </div>
+              <CancelButton handleModify={handleModifyTodo} />
             </>
           ) : (
             <>
               <div className='mr-1'>
-                <CompleteButton />
+                <ModifyButton handleModify={handleModifyTodo} />
               </div>
-              <CancelButton handleModify={handleModify} />
+              <CancelButton handleModify={handleViewDetailTodo} />
             </>
           )}
         </div>

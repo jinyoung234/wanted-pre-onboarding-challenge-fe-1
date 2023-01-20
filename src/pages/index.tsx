@@ -1,4 +1,4 @@
-import {ToDoBoard, ToDoList} from '@/components/organisms'
+import {ToDoList} from '@/components/organisms'
 import {useUser} from '@/hooks'
 import {CreateToDoType} from '@/types'
 import {Dimmed, ToDoLayout} from '@/wrappers'
@@ -9,6 +9,12 @@ import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import {useCreateTodo} from '@/queries'
 import {MainPageContext} from '@/contexts'
+import useGetTodoDetail from '@/queries/main/useGetTodoDetail'
+import dynamic from 'next/dynamic'
+
+const ToDoBoard = dynamic(() => import('@/components/organisms').then(mod => mod.ToDoBoard), {
+  ssr: false,
+})
 
 const Home: NextPage = () => {
   useUser()
@@ -23,18 +29,28 @@ const Home: NextPage = () => {
     method.reset()
   }
   const [viewDetail, setViewDetail] = React.useState(false)
-  const handleViewDetailTodo = () => {
+  const {todoDetail, setTodoId} = useGetTodoDetail()
+  const handleViewDetailTodo = (id?: string) => {
     setViewDetail(!viewDetail)
+    if (id) setTodoId(id)
+  }
+  const [modify, setModify] = React.useState(false)
+  const handleModifyTodo = () => {
+    setModify(!modify)
   }
   return (
     <FormProvider {...method}>
-      <MainPageContext.Provider value={{todoList: {handleSubmitTodo, handleViewDetailTodo}}}>
+      <MainPageContext.Provider
+        value={{
+          todoList: {handleSubmitTodo, handleViewDetailTodo},
+        }}
+      >
         <ToDoLayout>
           <ToDoList />
           {viewDetail && (
             <>
               <Dimmed handleViewDetailTodo={handleViewDetailTodo} />
-              <ToDoBoard todo={{createAt: '2022-01-17', title: '끝내주게 쉬기', content: '낮잠을 자며 쉰다'}} />
+              <ToDoBoard modify={modify} handleModifyTodo={handleModifyTodo} todoDetail={todoDetail} />
             </>
           )}
         </ToDoLayout>
