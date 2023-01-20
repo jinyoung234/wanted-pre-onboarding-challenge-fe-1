@@ -39,13 +39,13 @@ interface ToDoListInterface {
   data: ToDoInterface[]
 }
 
-interface ToDoListProps {
+interface ToDoListContextInterface {
   handleSubmitTodo: (todo: CreateToDoType) => void
   handleViewDetailTodo: (id?: string) => void
 }
 
 interface MainPageContextInterface {
-  todoList: ToDoListProps
+  todoList: ToDoListContextInterface
 }
 
 export type {
@@ -58,6 +58,6 @@ export type {
   ToDoListDetailInterface,
   CreateToDoType,
   ResponseToDoListInterface,
-  ToDoListProps,
+  ToDoListContextInterface,
   MainPageContextInterface,
 }

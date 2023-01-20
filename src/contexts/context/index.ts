@@ -1,6 +1,6 @@
-import {MainPageContextInterface, ToDoListProps} from '@/types'
+import {MainPageContextInterface, ToDoListContextInterface} from '@/types'
 import React from 'react'
 
 export const MainPageContext = React.createContext<MainPageContextInterface>({
-  todoList: {} as ToDoListProps,
+  todoList: {} as ToDoListContextInterface,
 })
