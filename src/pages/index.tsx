@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const {todoDetail, setTodoId} = useGetTodoDetail()
   const handleViewDetailTodo = (id?: string) => {
     setViewDetail(!viewDetail)
-    if (id) setTodoId(id)
+    if (id && typeof id === 'string') setTodoId(id)
   }
   const [modify, setModify] = React.useState(false)
   const handleModifyTodo = () => {
