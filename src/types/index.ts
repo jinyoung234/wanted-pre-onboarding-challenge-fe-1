@@ -45,6 +45,10 @@ interface ToDoListProps {
 }
 interface MainPageContextInterface {
   todoList: ToDoListProps
+  todoBoard: {
+    modify: boolean
+    handleModifyTodo: () => void
+  }
 }
 
 export type {
