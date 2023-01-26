@@ -20,6 +20,7 @@ module.exports = {
     'import/resolver': {
       typescript: {},
     },
+    'import/external-module-folders': ['.yarn'],
   },
   // React 소스 일 경우
   extends: [
