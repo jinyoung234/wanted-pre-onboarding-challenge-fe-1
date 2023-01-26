@@ -3,7 +3,7 @@ import React from 'react'
 
 type FormLayoutProps = LayoutProps & {
   formStyle?: string
-  handleSubmit: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
+  handleSubmit?: (e?: React.BaseSyntheticEvent<object, any, any> | undefined) => Promise<void>
 }
 
 const FormLayout = ({children, formStyle, handleSubmit}: FormLayoutProps) => {

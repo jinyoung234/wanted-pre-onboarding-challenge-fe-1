@@ -13,7 +13,7 @@ function Layout({children}: LayoutProps) {
       className={
         AuthStyle
           ? 'max-w-xl mx-auto h-screen justify-center bg-slate-100 flex flex-col'
-          : 'max-w-xl mx-auto h-[100%] bg-slate-100 flex flex-col'
+          : 'max-w-xl mx-auto min-h-screen h-[100%] bg-slate-100 flex flex-col'
       }
     >
       {children}

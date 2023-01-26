@@ -1,12 +1,5 @@
-import {Spinner} from '@/components/atoms'
-import {ToDoCreateForm} from '@/components/molecules'
-import dynamic from 'next/dynamic'
+import {ToDoCardList, ToDoCreateForm} from '@/components/molecules'
 import React from 'react'
-
-const ToDoCardList = dynamic(() => import('@/components/molecules/ToDoCardList'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
 
 const ToDoList = () => {
   return (

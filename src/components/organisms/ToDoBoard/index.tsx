@@ -14,6 +14,7 @@ interface ToDoBoardProps {
 }
 const ToDoBoard = ({handleValidModify, todoDetail, modify, handleModifyTodo, handleViewDetailTodo}: ToDoBoardProps) => {
   const {handleSubmit, register} = useForm<FormInterface>()
+  const {handleDeleteTodo} = useDeleteTodo(todoDetail?.id)
   return (
     <div className='absolute left-[9rem] z-[1000] top-[10rem] bg-white w-[20rem] h-[14rem] rounded-md'>
       <FormLayout
@@ -59,7 +60,7 @@ const ToDoBoard = ({handleValidModify, todoDetail, modify, handleModifyTodo, han
                 <ModifyButton handleModify={handleModifyTodo} />
               </div>
               <div className='mr-1'>
-                <DeleteButton />
+                <DeleteButton handleDeleteTodo={handleDeleteTodo} />
               </div>
               <CancelButton handleModify={handleViewDetailTodo} />
             </>

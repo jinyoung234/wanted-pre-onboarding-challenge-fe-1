@@ -1,4 +1,4 @@
-import {ToDoList} from '@/components/organisms'
+import {ToDoBoard, ToDoList} from '@/components/organisms'
 import {useUser} from '@/hooks'
 import {CreateToDoType, FormInterface} from '@/types'
 import {Dimmed, ToDoLayout} from '@/wrappers'
@@ -10,11 +10,6 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {useCreateTodo, useModifyTodo} from '@/queries'
 import {MainPageContext} from '@/contexts'
 import useGetTodoDetail from '@/queries/main/useGetTodoDetail'
-import dynamic from 'next/dynamic'
-
-const ToDoBoard = dynamic(() => import('@/components/organisms').then(mod => mod.ToDoBoard), {
-  ssr: false,
-})
 
 const Home: NextPage = () => {
   useUser()
